@@ -12,9 +12,9 @@ public class MainClass {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://catalog.onliner.by/washingmachine");
-        clickCheckBox("LG");
+        driver.get("https://imarket.by/catalog/kholodilniki/");
         clickCheckBox("Samsung");
+        clickCheckBox("LG");
 
 
 
@@ -22,8 +22,8 @@ public class MainClass {
 
     }
     public static void clickCheckBox(String name){
-        String rbXpath="//span[text()='%s']/parent::label";
-        if (!driver.findElement(By.xpath(String.format(rbXpath, name)+"/input")).isSelected()){
+        String rbXpath="//span[text()='%s']";
+        if (!driver.findElement(By.xpath(String.format(rbXpath, name)+"/parent::label/preceding-sibling::input")).isSelected()){
             driver.findElement(By.xpath(String.format(rbXpath, name))).click();
         }
 
