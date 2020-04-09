@@ -1,3 +1,4 @@
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -15,14 +16,15 @@ public class MainClass {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://www.21vek.by/washing_machines/");
-        List<WebElement> lis= driver.findElements(By.xpath("//dt[text()='Производители']/parent::dl/parent::div//dd[@class='filter-attr__value']"));
-        //lis.get(3).click();
-        //List<WebElement> checkb=driver.findElements(By.xpath("//ul[@class='catalog-sort']/following-sibling::span"));
+        driver.get("https://www.w3schools.com/html/html_tables.asp");
+        WebElement Elementtable= driver.findElement(By.xpath("//table[@id='customers']"));
 
-        for (WebElement chechbox : lis){
-            chechbox.click();
-        }
+        table tabl=new table(Elementtable, driver);
+        System.out.println("rows number is"+tabl.getRows().size());
+        System.out.println(tabl.getValueFromCell(2,3));
+        System.out.println(tabl.getValueFromCell(4, "Country"));
+
+        driver.quit();
 
 
 
